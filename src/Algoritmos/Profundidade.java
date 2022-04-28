@@ -36,8 +36,9 @@ public class Profundidade extends Algoritmo {
 	 */
 	public void run()
 	{
-		System.out.println("Iniciando o algoritmo");
+		System.out.println("Iniciando o algoritmo em profundidade");
 		visit(3);
+		System.out.println("Finalizado");
 	}
 	
 	/**
