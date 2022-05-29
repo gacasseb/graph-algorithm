@@ -54,7 +54,7 @@ public class Profundidade extends Algoritmo {
 		System.out.println(current);
 		
 		for ( int i = 0; i < this.grafo.vertices[current].size(); i++ ) {
-			int next = (int) this.grafo.vertices[current].get(i);
+			int next = (int) this.grafo.vertices[current].get(i)[0];
 			if ( cor[next] == "branco" ) {
 				precedente[next] = current;
 				visit(next);

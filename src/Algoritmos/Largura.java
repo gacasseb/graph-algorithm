@@ -58,7 +58,7 @@ public class Largura extends Algoritmo {
 			
 			for ( int i = 0; i < this.grafo.vertices[current].size(); i++ ) {
 				
-				int next = (int) this.grafo.vertices[current].get(i);
+				int next = (int) this.grafo.vertices[current].get(i)[0];
 				if ( cor[next] == "branco" ) {
 					cor[next] = "cinza";
 					distancia[next] = distancia[current] + 1;
@@ -81,7 +81,7 @@ public class Largura extends Algoritmo {
 	public void enqueue(Integer edge)
 	{
 		for ( int i = 0; i < this.grafo.vertices[edge].size(); i++ ) {
-			fila.add((int) this.grafo.vertices[edge].get(i));
+			fila.add((int) this.grafo.vertices[edge].get(i)[0]);
 		}
 	}
 }
