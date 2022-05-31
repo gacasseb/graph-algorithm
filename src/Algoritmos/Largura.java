@@ -12,8 +12,8 @@ public class Largura extends Algoritmo {
 	private Integer[] distancia;
 	private LinkedList<Integer> fila;
 
-	public Largura(Grafo grafo) {
-		super(grafo);
+	public Largura(Grafo grafo, Integer origem) {
+		super(grafo, origem);
 		
 		precedente = new Integer[this.grafo.vertices.length];
 		distancia = new Integer[this.grafo.vertices.length];

@@ -22,6 +22,7 @@ public class Main {
 		grafo.load(file);
 		grafo.printVertices();
 		menu.menuAlgoritmos(grafo, sc);
+
 		
 		sc.close();
 	}
