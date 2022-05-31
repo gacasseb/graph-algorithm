@@ -21,19 +21,11 @@ public class Main {
 		grafo = new Grafo();
 		grafo.load(file);
 		grafo.printVertices();
-//		grafo.randomLoad();
-		
-//		runProfundidade(grafo);
-//		runLargura(grafo);
 		menu.menuAlgoritmos(grafo, sc);
 		
-//		System.out.println("Resultados: ");
-//		System.out.println(grafo.getOrientado());
-//		System.out.println(grafo.getNumVertices());
-//		System.out.println(grafo.getVertices().length);
 		sc.close();
 	}
-	
+	/*
 	public static void runProfundidade(Grafo grafo)
 	{
 		Profundidade algoritmo;
@@ -47,4 +39,5 @@ public class Main {
 		algoritmo = new Largura(grafo);
 		algoritmo.run();
 	}
+	*/
 }
