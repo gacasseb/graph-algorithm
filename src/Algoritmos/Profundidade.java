@@ -10,9 +10,9 @@ public class Profundidade extends Algoritmo {
 	private Integer[] timestamp;
 	private Integer[] finishTime;
 		
-	public Profundidade(Grafo grafo)
+	public Profundidade(Grafo grafo, Integer origem)
 	{
-		super(grafo);
+		super(grafo, origem);
 		time = 0;
 		precedente = new Integer[this.grafo.vertices.length];
 		timestamp = new Integer[this.grafo.vertices.length];

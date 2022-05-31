@@ -15,15 +15,16 @@ public class Main {
 		menu = new Menu();
 		String fileName;
 		fileName = menu.menuPrincipal(sc);
-		BufferedReader file = new BufferedReader(new FileReader(fileName));
-		
-		Grafo grafo;
-		grafo = new Grafo();
-		grafo.load(file);
-		grafo.printVertices();
-		menu.menuAlgoritmos(grafo, sc);
-
-		
+		if(fileName != null){
+			BufferedReader file = new BufferedReader(new FileReader(fileName));
+			Grafo grafo;
+			grafo = new Grafo();
+			
+			grafo.load(file);
+			grafo.printVertices();
+			menu.menuAlgoritmos(grafo, sc);
+	
+		}
 		sc.close();
 	}
 	/*
