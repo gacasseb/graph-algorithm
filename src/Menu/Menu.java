@@ -6,6 +6,7 @@ import Grafo.Grafo;
 import Algoritmos.Profundidade;
 import Algoritmos.Largura;
 import Algoritmos.BellmanFord;
+import Algoritmos.Kruskall;
 import guru.nidi.graphviz.model.Graph;
 
 public class Menu {
@@ -20,6 +21,7 @@ public class Menu {
             if(opcao == 1){
                 System.out.println("Digite o caminho do arquivo:");
                 entrada = sc.next();
+                return entrada;
             }
             else{
                 System.out.println("Opcao invalida, tente novamente");
@@ -65,7 +67,9 @@ public class Menu {
                 algoritmo.run(origem);
             }
             else if(entrada == 4){
-
+                Kruskall algoritmo;
+                algoritmo = new Kruskall(grafo, 0);
+                algoritmo.run();
             }
             else if(entrada == 5){
         

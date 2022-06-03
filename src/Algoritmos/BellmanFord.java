@@ -3,6 +3,7 @@ package Algoritmos;
 import java.util.ArrayList;
 
 import Grafo.Grafo;
+import Grafo.Aresta;
 
 public class BellmanFord extends Algoritmo{
     private ArrayList<Integer> pi= new ArrayList<>();
@@ -17,16 +18,21 @@ public class BellmanFord extends Algoritmo{
         d.add(origem, 0);
     }
 
-    private void relax(int[] u, int[] v){
+    private void relax(Aresta aresta, Integer origem){
         System.out.print("d[v] :");
-        System.out.println(d.get(v[0]));
+        System.out.println(d.get(aresta.getInicio()));
         System.out.print("d[u]: ");
-        System.out.println(d.get(u[0]));
+        System.out.println(d.get(aresta.getDestino()));
         System.out.print("peso: ");
-        System.out.println(v[1]);
-        if(d.get(v[0]) > d.get(u[0]) + v[1]){
-            d.add(v[0], d.get(u[0]) + v[1]);
-            pi.add(v[0], u[0]);
+        System.out.println(aresta.getPeso());
+        if(d.get(aresta.getInicio()) > d.get(aresta.getDestino()) + aresta.getPeso()){
+            if(d.get(aresta.getInicio()) == 30000 || aresta.getDestino() != origem){
+                d.add(aresta.getDestino(), aresta.getPeso());
+            }
+            else{
+                d.add(aresta.getDestino(), d.get(aresta.getInicio()) + aresta.getPeso());
+            }
+            pi.add(aresta.getDestino(), aresta.getInicio());
         }
     }
 
@@ -36,27 +42,29 @@ public class BellmanFord extends Algoritmo{
         }
         else{
             grafo.printVertices();
-            for(int i = 0; i < grafo.getNumVertices(); i++){
-                for(int j = 0; j < grafo.vertices[i].size(); j++){
-                    int[] aresta;
-                    aresta = new int[2];
-                    aresta = grafo.vertices[i].get(j);
-                    relax(grafo.vertices[i].get(j), aresta);
+            Aresta aresta = new Aresta();
+            ArrayList<Aresta> arestas = new ArrayList<>();
+            arestas = aresta.getArestas(grafo);
+            //aresta.printArestas(arestas);
+            System.out.println(d);
+            System.out.println(pi);
+            for(int i = 1; i < grafo.getNumVertices() - 1; i++){
+                for(int j = 0; j < arestas.size(); j++){
+                    relax(arestas.get(j), origem);
                     System.out.println(d);
                     System.out.println(pi);
                 }
             }
+            /*
             for(int i = 0; i < grafo.getNumVertices(); i++){
                 for(int j = 0; j < grafo.vertices[i].size(); j++){
-                    int[] aresta = new int[2];
-                    aresta = grafo.vertices[i].get(j);
-                    System.out.println(aresta[0]);
                     if(d.get(aresta[0]) > d.get(grafo.vertices[i].get(j)[0]) + aresta[1]){
                         System.out.println("Nao foi possivel executar, ciclo de peso negativo");
                         return false;
                     }
                 }
             }
+            */
             return true;
         }
         return false;
