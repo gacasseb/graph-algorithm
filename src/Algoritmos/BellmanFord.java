@@ -45,7 +45,6 @@ public class BellmanFord extends Algoritmo{
             Aresta aresta = new Aresta();
             ArrayList<Aresta> arestas = new ArrayList<>();
             arestas = aresta.getArestas(grafo);
-            //aresta.printArestas(arestas);
             System.out.println(d);
             System.out.println(pi);
             for(int i = 1; i < grafo.getNumVertices() - 1; i++){

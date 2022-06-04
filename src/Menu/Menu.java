@@ -2,12 +2,11 @@ package Menu;
 
 import java.util.Scanner;
 
-import Grafo.Grafo;
-import Algoritmos.Profundidade;
-import Algoritmos.Largura;
 import Algoritmos.BellmanFord;
 import Algoritmos.Kruskall;
-import guru.nidi.graphviz.model.Graph;
+import Algoritmos.Largura;
+import Algoritmos.Profundidade;
+import Grafo.Grafo;
 
 public class Menu {
     
@@ -20,7 +19,8 @@ public class Menu {
         while(opcao != 0){
             if(opcao == 1){
                 System.out.println("Digite o caminho do arquivo:");
-                entrada = sc.next();
+            //    entrada = sc.next();
+                entrada = "src\\grafo1.txt";
                 return entrada;
             }
             else{
