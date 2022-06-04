@@ -105,7 +105,7 @@ public class Kruskall extends Algoritmo{
 		System.out.println("\nFinalizado");
 	}
 
-    public void imprimirResultado(ArrayList<String> resultado){
+    private void imprimirResultado(ArrayList<String> resultado){
         for(int i = 0; i < resultado.size(); i++){
             System.out.print("(" + resultado.get(i) + ") ");
         }

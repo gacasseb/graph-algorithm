@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Algoritmos.BellmanFord;
 import Algoritmos.Kruskall;
 import Algoritmos.Largura;
+import Algoritmos.Prim;
 import Algoritmos.Profundidade;
 import Grafo.Grafo;
 
@@ -20,7 +21,7 @@ public class Menu {
             if(opcao == 1){
                 System.out.println("Digite o caminho do arquivo:");
             //    entrada = sc.next();
-                entrada = "src\\grafo1.txt";
+                entrada = "src\\grafo2.txt";
                 return entrada;
             }
             else{
@@ -72,11 +73,15 @@ public class Menu {
                 algoritmo.run();
             }
             else if(entrada == 5){
-        
+                System.out.println("Digite o vertice de origem");
+                origem = sc.nextInt();
+                Prim algoritmo;
+                algoritmo = new Prim(grafo, origem);
+                algoritmo.run();
             }
             else if(entrada == 6){
                 if(grafo.getOrientado() == true){
-                    
+           
                 }
                 else{
 
