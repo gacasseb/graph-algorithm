@@ -44,8 +44,9 @@ public class BellmanFord extends Algoritmo{
                     relax(arestas.get(j));
                 }
             }
-            for(int j = 0; j < arestas.size(); j++){
-                if(d.get(arestas.get(j).getDestino()) > (d.get(arestas.get(j).getInicio() + arestas.get(j).getPeso()))){
+            System.out.println(arestas.size());
+            for(int k = 0; k < arestas.size(); k++){
+                if(d.get(arestas.get(k).getDestino()) > d.get(arestas.get(k).getInicio())+ arestas.get(k).getPeso()){
                     return false;
                 }
             }
@@ -55,10 +56,28 @@ public class BellmanFord extends Algoritmo{
     }
 
     public void imprimirResultado(Integer origem){
-        System.out.println("Origem: " + origem);
+        int j, k = 0, w;
+        System.out.println("\nOrigem: " + origem);
         for(int i = 0; i < grafo.getNumVertices(); i++){
-            System.out.print("Destino: " + i);
-            System.out.print("Distancia: " + d.get(i));
+            ArrayList<Integer> caminho = new ArrayList<>();
+            System.out.print("Destino: " + i + " ");
+            System.out.print("Distancia: " + d.get(i) + " ");
+            j = i;
+            System.out.print("Caminho: ");
+            while(pi.get(j) != null){
+                if(k >= grafo.getNumVertices()){
+                    break;
+                }
+                caminho.add(pi.get(j));
+                j = pi.get(j);
+            }
+            k = caminho.size();
+            w = k - 1;
+            while(w >= 0){
+                System.out.print(caminho.get(w) + " - ");
+                w--;
+            }
+            System.out.println(i);
         }
     }
 
@@ -72,7 +91,7 @@ public class BellmanFord extends Algoritmo{
             imprimirResultado(origem);    
         }
         else{
-            System.out.println("Erro: o grafo deve ser orientado");
+            System.out.println("Erro: ciclo negativo no grafo");
         }
 		System.out.println("\nFinalizado");
 	}
