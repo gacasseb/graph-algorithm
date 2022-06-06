@@ -1,5 +1,6 @@
 package Menu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Algoritmos.BellmanFord;
@@ -7,7 +8,9 @@ import Algoritmos.Kruskall;
 import Algoritmos.Largura;
 import Algoritmos.Prim;
 import Algoritmos.Profundidade;
+import Grafo.Aresta;
 import Grafo.Grafo;
+import DesenhoGrafo.DesenhoGrafo;
 
 public class Menu {
     
@@ -20,8 +23,7 @@ public class Menu {
         while(opcao != 0){
             if(opcao == 1){
                 System.out.println("Digite o caminho do arquivo:");
-            //    entrada = sc.next();
-                entrada = "src\\grafo2.txt";
+                entrada = sc.next();
                 return entrada;
             }
             else{
@@ -34,6 +36,10 @@ public class Menu {
 
 
     public void menuAlgoritmos(Grafo grafo, Scanner sc){
+        ArrayList<Aresta> arestas = new ArrayList<>();
+        Aresta a = new Aresta();
+        arestas = a.getArestas(grafo);
+        arestas = a.removerRepetidos(arestas);
         int entrada;
         Integer origem = 0;
         System.out.println("Selecione a opção de algoritmo ou desenhe o grafo:");
@@ -80,12 +86,8 @@ public class Menu {
                 algoritmo.run();
             }
             else if(entrada == 6){
-                if(grafo.getOrientado() == true){
-           
-                }
-                else{
-
-                }
+                DesenhoGrafo desenho = new DesenhoGrafo();
+                desenho.desenharGrafo(grafo, null, arestas);
             }
              else{
                 System.out.println("Entrada inválida, tente novamente");
@@ -103,4 +105,5 @@ public class Menu {
             entrada = sc.nextInt();
         }
     }
+
 }

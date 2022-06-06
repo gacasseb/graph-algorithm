@@ -67,6 +67,18 @@ public class Prim extends Algoritmo{
         }
     }
 
+    private ArrayList<String> getResultado(Integer origem){
+        ArrayList<String> resultado = new ArrayList<>();
+        String aresta;
+        for(int i = 0; i < pi.size(); i++){
+            if(i != origem){
+                aresta = pi.get(i) + "," + i;
+                resultado.add(aresta);
+            }
+        }
+        return resultado;
+    }
+
     private void imprimirResultado(Integer origem){
         System.out.println("vertice inicial: " + origem);
         int pesoTotal = 0;
@@ -108,10 +120,8 @@ public class Prim extends Algoritmo{
 		System.out.println("Iniciando o algoritmo de Bellman Ford\n");
 		prim(origem);
         imprimirResultado(origem);
+        resultado = getResultado(origem);
 		System.out.println("\nFinalizado");
 	}
-
-     
-
 
 }
