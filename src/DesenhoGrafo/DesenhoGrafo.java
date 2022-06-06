@@ -59,7 +59,7 @@ public class DesenhoGrafo {
         });
         try{
             DateTimeFormatter data = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH_mm_ss");
-            Graphviz.fromGraph(grafoDesenho).width(600).render(Format.PNG).toFile(new File("src/GrafosDesenhados/" + data.format(LocalDateTime.now()) + ".png"));
+            Graphviz.fromGraph(grafoDesenho).width(500).render(Format.PNG).toFile(new File("src/GrafosDesenhados/" + data.format(LocalDateTime.now()) + ".png"));
             System.out.println("Desenho gerado com sucesso\n");
         } catch(IOException e){
             e.printStackTrace();

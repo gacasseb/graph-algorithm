@@ -39,7 +39,6 @@ public class Menu {
         ArrayList<Aresta> arestas = new ArrayList<>();
         Aresta a = new Aresta();
         arestas = a.getArestas(grafo);
-        arestas = a.removerRepetidos(arestas);
         int entrada;
         Integer origem = 0;
         System.out.println("Selecione a opção de algoritmo ou desenhe o grafo:");
@@ -87,7 +86,12 @@ public class Menu {
             }
             else if(entrada == 6){
                 DesenhoGrafo desenho = new DesenhoGrafo();
+                if(!grafo.getOrientado()){
+                    a.ordenarPeso(arestas, arestas.size());
+                    a.removerRepetidos(arestas);
+                }
                 desenho.desenharGrafo(grafo, null, arestas);
+
             }
              else{
                 System.out.println("Entrada inválida, tente novamente");

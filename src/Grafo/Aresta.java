@@ -60,14 +60,12 @@ public class Aresta {
 
     }
 
-    public ArrayList<Aresta> removerRepetidos(ArrayList<Aresta> arestas){
+    public void removerRepetidos(ArrayList<Aresta> arestas){
         for(int i = 0; i < arestas.size() - 1; i++){
             if(arestas.get(i).inicio == arestas.get(i+1).destino && arestas.get(i).destino == arestas.get(i+1).inicio){
                 arestas.remove(i+1);
-                System.out.println("A");
             }
         }
-        return arestas;
     }
 
     public Integer getInicio(){
