@@ -59,7 +59,7 @@ public class Profundidade extends Algoritmo {
 		time++;
 		timestamp[current] = time;
 		
-		System.out.println(current);
+		System.out.print(current + "-");
 		
 		// Percorre todos os vértices
 		for ( int i = 0; i < this.grafo.vertices[current].size(); i++ ) {
