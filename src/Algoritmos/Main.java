@@ -21,25 +21,9 @@ public class Main {
 			grafo = new Grafo();
 			
 			grafo.load(file);
-			grafo.printVertices();
 			menu.menuAlgoritmos(grafo, sc);
 	
 		}
 		sc.close();
 	}
-	/*
-	public static void runProfundidade(Grafo grafo)
-	{
-		Profundidade algoritmo;
-		algoritmo = new Profundidade(grafo);
-		algoritmo.run();
-	}
-	
-	public static void runLargura(Grafo grafo)
-	{
-		Largura algoritmo;
-		algoritmo = new Largura(grafo);
-		algoritmo.run();
-	}
-	*/
 }

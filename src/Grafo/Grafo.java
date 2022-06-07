@@ -3,7 +3,6 @@ package Grafo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.LinkedList;
-import guru.nidi.graphviz.*;
 
 public class Grafo {
 	private boolean orientado;

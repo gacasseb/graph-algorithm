@@ -1,15 +1,6 @@
 package Algoritmos;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.random.RandomGenerator.ArbitrarilyJumpableGenerator;
-
-import javax.lang.model.type.NoType;
-import javax.lang.model.util.Elements.Origin;
-
-import com.kitfox.svg.A;
 
 import Grafo.Aresta;
 import Grafo.Grafo;
@@ -28,7 +19,7 @@ public class Prim extends Algoritmo{
         key.set(origem, 0);
     }
 
-    public void prim(Integer origem){
+    public boolean prim(Integer origem){
         ArrayList<Integer> Q = new ArrayList<>();
         ArrayList<Aresta> arestas = new ArrayList<>();
         Aresta aresta = new Aresta();
@@ -36,6 +27,7 @@ public class Prim extends Algoritmo{
         aresta.ordenarPeso(arestas, arestas.size());
         if(grafo.getOrientado()){
             System.out.println("Nao foi possivel executar, o grafo nao pode ser orientado");
+            return false;
         }
         else{
             Q.add(origem);
@@ -65,14 +57,20 @@ public class Prim extends Algoritmo{
                 }
             }
         }
+        return true;
     }
 
     private ArrayList<String> getResultado(Integer origem){
         ArrayList<String> resultado = new ArrayList<>();
-        String aresta;
+        String aresta = new String();
         for(int i = 0; i < pi.size(); i++){
             if(i != origem){
-                aresta = pi.get(i) + "," + i;
+                if(pi.get(i) > i){
+                    aresta = i + "," + pi.get(i);
+                }
+                else if(pi.get(i) < i){
+                    aresta = pi.get(i) + "," + i;
+                }
                 resultado.add(aresta);
             }
         }
@@ -114,14 +112,18 @@ public class Prim extends Algoritmo{
         return Q;
     }
 
-    public void run()
+    public ArrayList<String> run()
 	{
         ArrayList<String> resultado = new ArrayList<>();
-		System.out.println("Iniciando o algoritmo de Bellman Ford\n");
-		prim(origem);
-        imprimirResultado(origem);
-        resultado = getResultado(origem);
+        boolean sucesso;
+		System.out.println("Iniciando o algoritmo de Prim\n");
+		sucesso = prim(origem);
+        if(sucesso){
+            imprimirResultado(origem);
+            resultado = getResultado(origem);
+        }
 		System.out.println("\nFinalizado");
+        return resultado;
 	}
 
 }

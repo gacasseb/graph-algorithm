@@ -96,13 +96,14 @@ public class Kruskall extends Algoritmo{
         System.out.println("\n");
     }
 
-    public void run()
+    public ArrayList<String> run()
 	{
         ArrayList<String> resultado = new ArrayList<>();
-		System.out.println("Iniciando o algoritmo de Bellman Ford\n");
+		System.out.println("Iniciando o algoritmo de Kruskall\n");
 		resultado = kruskall();
         imprimirResultado(resultado);
 		System.out.println("\nFinalizado");
+        return resultado;
 	}
 
     private void imprimirResultado(ArrayList<String> resultado){

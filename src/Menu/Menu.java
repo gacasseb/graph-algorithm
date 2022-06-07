@@ -1,5 +1,6 @@
 package Menu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -36,13 +37,15 @@ public class Menu {
 
 
     public void menuAlgoritmos(Grafo grafo, Scanner sc){
+        DesenhoGrafo desenho = new DesenhoGrafo();
         ArrayList<Aresta> arestas = new ArrayList<>();
+        ArrayList<String> resultadoPrimKruskall = new ArrayList<>();
         Aresta a = new Aresta();
         arestas = a.getArestas(grafo);
         int entrada;
         Integer origem = 0;
         System.out.println("Selecione a opção de algoritmo ou desenhe o grafo:");
-        System.out.println("0. Voltar");
+        System.out.println("0. Sair");
         System.out.println("1. Busca em Profundidade");
         System.out.println("2. Busca em Largura");
         System.out.println("3. Bellman-Ford");
@@ -57,6 +60,8 @@ public class Menu {
                 Profundidade algoritmo;
                 algoritmo = new Profundidade(grafo, origem);
                 algoritmo.run();
+                pressionarEnterParaContinuar();
+                limparTela();
             }
             else if(entrada == 2){
                 System.out.println("Digite o vertice de origem");
@@ -64,6 +69,8 @@ public class Menu {
                 Largura algoritmo;
                 algoritmo = new Largura(grafo, origem);
                 algoritmo.run();
+                pressionarEnterParaContinuar();
+                limparTela();
             }
             else if(entrada == 3){
                 System.out.println("Digite o vertice de origem");
@@ -71,35 +78,46 @@ public class Menu {
                 BellmanFord algoritmo;
                 algoritmo = new BellmanFord(grafo, origem);
                 algoritmo.run(origem);
+                pressionarEnterParaContinuar();
+                limparTela();
             }
             else if(entrada == 4){
                 Kruskall algoritmo;
                 algoritmo = new Kruskall(grafo, 0);
-                algoritmo.run();
+                resultadoPrimKruskall = algoritmo.run();
+                a.ordenarPeso(arestas, arestas.size());
+                a.removerRepetidos(arestas);
+                desenho.desenharGrafo(grafo, resultadoPrimKruskall, arestas, "Kruskall");
+                pressionarEnterParaContinuar();
+                limparTela();
             }
             else if(entrada == 5){
                 System.out.println("Digite o vertice de origem");
                 origem = sc.nextInt();
                 Prim algoritmo;
                 algoritmo = new Prim(grafo, origem);
-                algoritmo.run();
+                resultadoPrimKruskall = algoritmo.run();
+                a.ordenarPeso(arestas, arestas.size());
+                a.removerRepetidos(arestas);
+                desenho.desenharGrafo(grafo, resultadoPrimKruskall, arestas, "Prim");
+                pressionarEnterParaContinuar();
+                limparTela();
             }
             else if(entrada == 6){
-                DesenhoGrafo desenho = new DesenhoGrafo();
                 if(!grafo.getOrientado()){
                     a.ordenarPeso(arestas, arestas.size());
                     a.removerRepetidos(arestas);
                 }
-                desenho.desenharGrafo(grafo, null, arestas);
-
+                desenho.desenharGrafo(grafo, null, arestas, "GrafoEntrada");
+                pressionarEnterParaContinuar();
+                limparTela();
             }
              else{
                 System.out.println("Entrada inválida, tente novamente");
                 entrada = sc.nextInt();
             }
-        
             System.out.println("Selecione a opção de algoritmo ou desenhe o grafo:");
-            System.out.println("0. Voltar");
+            System.out.println("0. Sair");
             System.out.println("1. Busca em Profundidade");
             System.out.println("2. Busca em Largura");
             System.out.println("3. Bellman-Ford");
@@ -110,4 +128,28 @@ public class Menu {
         }
     }
 
+    /**
+     * Limpa o console
+     */
+    public static void limparTela(){
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
+    }
+
+    /**
+     * Aguarda a entrada de um enter do teclado para gerenciamento das telas dos menus
+     */
+    private void pressionarEnterParaContinuar(){ 
+           System.out.println("Pressione Enter para continuar");
+           try
+           {
+               System.in.read();
+           }  
+           catch(Exception e)
+           {}  
+    }
 }
