@@ -8,6 +8,11 @@ import Menu.Menu;
 
 public class Main {
 
+	/**
+	 * Lê arquivo do grafo armazenado, carrega o grafo do arquivo e printa o menu de algoritmos
+	 * @param args
+	 * @throws FileNotFoundException
+	 */
 	public static void main(String args[]) throws FileNotFoundException
 	{
 		Scanner sc = new Scanner(System.in);
@@ -27,19 +32,4 @@ public class Main {
 		}
 		sc.close();
 	}
-	/*
-	public static void runProfundidade(Grafo grafo)
-	{
-		Profundidade algoritmo;
-		algoritmo = new Profundidade(grafo);
-		algoritmo.run();
-	}
-	
-	public static void runLargura(Grafo grafo)
-	{
-		Largura algoritmo;
-		algoritmo = new Largura(grafo);
-		algoritmo.run();
-	}
-	*/
 }

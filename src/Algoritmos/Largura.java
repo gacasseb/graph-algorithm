@@ -12,6 +12,11 @@ public class Largura extends Algoritmo {
 	private Integer[] distancia;
 	private LinkedList<Integer> fila;
 
+	/**
+	 * Inicia variáveis para algoritmo de busca em largura
+	 * @param grafo
+	 * @param origem
+	 */
 	public Largura(Grafo grafo, Integer origem) {
 		super(grafo, origem);
 		
@@ -33,10 +38,13 @@ public class Largura extends Algoritmo {
 		}
 	}
 	
+	/**
+	 * Gatilho para algoritmo de Busca em Largura
+	 */
 	public void run()
 	{
 		System.out.println("Iniciando o algoritmo de busca em largura");
-		iterate(3);
+		iterate(origem);
 		System.out.println("\nFinalizado");
 	}
 		

@@ -9,17 +9,31 @@ public class Aresta {
     Integer destino;
     Integer peso;
 
+    /**
+     * Inicio das variáveis de Aresta
+     */
     public Aresta(){
         this.destino = -1;
         this.inicio = -1;
         this.peso = Integer.MAX_VALUE;
     }
 
+    /**
+     * Inicio das variáveis de Aresta
+     * @param inicio
+     * @param destino
+     * @param peso
+     */
     public Aresta(Integer inicio, Integer destino, Integer peso){
         this.inicio = inicio;
         this.destino = destino;
         this.peso = peso;
     }
+    /**
+     * Retorna arestas em um arrayList
+     * @param grafo
+     * @return ArrayList arestas
+     */
     public ArrayList<Aresta> getArestas(Grafo grafo){
         ArrayList<Aresta> arestas = new ArrayList<>();
         for(int i = 0; i < grafo.getNumVertices(); i++){
@@ -31,6 +45,10 @@ public class Aresta {
         return arestas;
     }
 
+    /**
+     * Printa em consolo todas as arestas
+     * @param arestas
+     */
     public void printArestas(ArrayList<Aresta> arestas){
         for(int i = 0; i < arestas.size(); i++){
             System.out.print("Inicio: ");
@@ -42,6 +60,11 @@ public class Aresta {
         }
     }
 
+    /**
+     * Faz a ordenação de peso das arestas
+     * @param arestas
+     * @param n
+     */
     public void ordenarPeso(ArrayList<Aresta> arestas, Integer n){
         if(n <= 1){
             return;
@@ -60,6 +83,11 @@ public class Aresta {
 
     }
 
+    /**
+     * Remove todas arestas repetidas
+     * @param arestas
+     * @return
+     */
     public ArrayList<Aresta> removerRepetidos(ArrayList<Aresta> arestas){
         for(int i = 0; i < arestas.size() - 1; i++){
             if(arestas.get(i).inicio == arestas.get(i+1).destino && arestas.get(i).destino == arestas.get(i+1).inicio){
@@ -70,14 +98,26 @@ public class Aresta {
         return arestas;
     }
 
+    /**
+     * Retorna inicio
+     * @return
+     */
     public Integer getInicio(){
         return this.inicio;
     }
 
+    /***
+     * Retorna destino
+     * @return
+     */
     public Integer getDestino(){
         return this.destino;
     }
 
+    /**
+     * Retorna peso da aresta
+     * @return
+     */
     public Integer getPeso(){
         return this.peso;
     }

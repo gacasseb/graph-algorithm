@@ -8,10 +8,21 @@ import javax.sql.rowset.spi.SyncProviderException;
 import Grafo.Grafo;
 import Grafo.Aresta;
 
-public class Kruskall extends Algoritmo{
-    public Kruskall(Grafo grafo, Integer origem){
+public class Kruskall extends Algoritmo {
+	
+	/**
+	 * 
+	 * @param grafo
+	 * @param origem
+	 */
+    public Kruskall(Grafo grafo, Integer origem) {
         super(grafo, origem);
     }
+    
+    /**
+     * Roda algoritmo principal do algoritmo de Kruskall
+     * @return
+     */
     private ArrayList<String> kruskall(){
         ArrayList<Aresta> arestas = new ArrayList<>();
         ArrayList<LinkedList<Integer>> conjuntos = new ArrayList<>();
@@ -54,6 +65,12 @@ public class Kruskall extends Algoritmo{
         return A;
     }
 
+    /**
+     * Retorna peso da aresta
+     * @param A
+     * @param arestas
+     * @return
+     */
     private Integer getPeso(ArrayList<String> A, ArrayList<Aresta> arestas){
         Integer peso = 0;
         Integer inicio, destino;
@@ -74,6 +91,12 @@ public class Kruskall extends Algoritmo{
         return peso;
     }
 
+    /**
+     * Busca posição do vértice no conjunto
+     * @param conjuntos
+     * @param vertice
+     * @return posição do vértice no conjunto
+     */
     private Integer localizarPosConjunto(ArrayList<LinkedList<Integer>> conjuntos, Integer vertice){
         for(int i = 0; i < conjuntos.size(); i++){
             for(int j = 0; j < conjuntos.get(i).size(); j++){
@@ -85,6 +108,10 @@ public class Kruskall extends Algoritmo{
         return -1;
     }
 
+    /**
+     * Imprime no console os conjuntos
+     * @param conjuntos
+     */
     private void imprimirConjuntos(ArrayList<LinkedList<Integer>> conjuntos){
         for(int i = 0; i < conjuntos.size(); i++){
             System.out.print("{ ");
@@ -96,6 +123,9 @@ public class Kruskall extends Algoritmo{
         System.out.println("\n");
     }
 
+    /**
+     * Gatilho para iniciar o algoritmo de Kruskall
+     */
     public void run()
 	{
         ArrayList<String> resultado = new ArrayList<>();
@@ -105,6 +135,10 @@ public class Kruskall extends Algoritmo{
 		System.out.println("\nFinalizado");
 	}
 
+    /**
+     * Imprime os resultados gerados
+     * @param resultado
+     */
     private void imprimirResultado(ArrayList<String> resultado){
         for(int i = 0; i < resultado.size(); i++){
             System.out.print("(" + resultado.get(i) + ") ");
