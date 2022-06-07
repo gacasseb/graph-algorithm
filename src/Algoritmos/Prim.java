@@ -9,6 +9,11 @@ public class Prim extends Algoritmo{
     private ArrayList<Integer> pi= new ArrayList<>();
     private ArrayList<Integer> key = new ArrayList<>();
 
+    /**
+     * Início de variáveis do algoritmo de Prim
+     * @param grafo
+     * @param origem
+     */
     public Prim(Grafo grafo, Integer origem){
         super(grafo, origem);
         for(int i = 0; i < grafo.getNumVertices(); i++){
@@ -19,6 +24,10 @@ public class Prim extends Algoritmo{
         key.set(origem, 0);
     }
 
+    /**
+     * Roda o algoritmo de Prim
+     * @param origem
+     */
     public boolean prim(Integer origem){
         ArrayList<Integer> Q = new ArrayList<>();
         ArrayList<Aresta> arestas = new ArrayList<>();
@@ -60,6 +69,11 @@ public class Prim extends Algoritmo{
         return true;
     }
 
+    /**
+     * Busca e retorna resultado da aresta
+     * @param origem
+     * @return
+     */
     private ArrayList<String> getResultado(Integer origem){
         ArrayList<String> resultado = new ArrayList<>();
         String aresta = new String();
@@ -77,6 +91,10 @@ public class Prim extends Algoritmo{
         return resultado;
     }
 
+    /**
+     * Imprime resutado do algoritmo de Prim
+     * @param origem
+     */
     private void imprimirResultado(Integer origem){
         System.out.println("vertice inicial: " + origem);
         int pesoTotal = 0;
@@ -93,6 +111,11 @@ public class Prim extends Algoritmo{
         System.out.println();
     }
 
+    /**
+     * Retorna posição de forma ordenada
+     * @param Q
+     * @return
+     */
     private Integer ordenarQ(ArrayList<Integer> Q){
         Integer menor = Q.get(0);
         Integer posicao = 0;
@@ -105,6 +128,12 @@ public class Prim extends Algoritmo{
         return posicao;
     }
 
+    /**
+     * Retorna menor vértice
+     * @param Q
+     * @param aux
+     * @return
+     */
     private ArrayList<Integer> extrairVerticesMinimo(ArrayList<Integer> Q, ArrayList<Integer> aux){
         for(int i = 0; i < aux.size(); i++){
             Q.remove(aux.get(i));
@@ -112,6 +141,9 @@ public class Prim extends Algoritmo{
         return Q;
     }
 
+    /**
+     * Gatilho para iniciar algoritmo de Prim
+     */
     public ArrayList<String> run()
 	{
         ArrayList<String> resultado = new ArrayList<>();

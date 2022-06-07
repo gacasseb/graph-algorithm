@@ -9,16 +9,28 @@ public class Grafo {
 	private int numVertices;
 	public LinkedList<int[]>[] vertices;
 	
+	/**
+	 * Retorna se o Grafo é orientado ou não orientado
+	 * @return
+	 */
 	public boolean getOrientado()
 	{
 		return orientado;
 	}
 	
+	/**
+	 * Retorna quantidade de vértices salvos na lista encadeada
+	 * @return
+	 */
 	public int getNumVertices()
 	{
 		return numVertices;
 	}
 	
+	/**
+	 * Retorna lista encadeada de vértices
+	 * @return
+	 */
 	public LinkedList<int[]>[] getVertices()
 	{
 		return vertices;
@@ -57,6 +69,9 @@ public class Grafo {
 		return true;
 	}
 	
+	/**
+	 * Printa em console todos os vértices com respectivos pesos
+	 */
 	public void printVertices()
 	{
 		for (int i=0; i < this.vertices.length; i++) {
@@ -67,6 +82,10 @@ public class Grafo {
 		}
 	}
 	
+	/**
+	 * Carrega os vértices do arquivo de entrada
+	 * @param line
+	 */
 	private void loadVertice(String line)
 	{
 		String[] split = line.split(":");
@@ -115,6 +134,12 @@ public class Grafo {
 		}
 	}
 	
+	/**
+	 * Retorna posição ordenada para um vértice do grafo
+	 * @param edge
+	 * @param newEdge
+	 * @return
+	 */
 	private int getOrdenedPosition(int edge, int newEdge)
 	{
 		int position = 0;

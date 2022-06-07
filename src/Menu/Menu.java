@@ -15,6 +15,11 @@ import DesenhoGrafo.DesenhoGrafo;
 
 public class Menu {
     
+	/**
+	 * Printa e gerencia menu principal
+	 * @param sc
+	 * @return
+	 */
     public String menuPrincipal(Scanner sc){
         String entrada = null;
         System.out.println("Carregar Grafo");
@@ -36,6 +41,11 @@ public class Menu {
     }
 
 
+    /**
+     * Printa e gerencia menu de algoritmos
+     * @param grafo
+     * @param sc
+     */
     public void menuAlgoritmos(Grafo grafo, Scanner sc){
         DesenhoGrafo desenho = new DesenhoGrafo();
         ArrayList<Aresta> arestas = new ArrayList<>();

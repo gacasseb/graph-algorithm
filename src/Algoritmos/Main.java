@@ -8,6 +8,11 @@ import Menu.Menu;
 
 public class Main {
 
+	/**
+	 * Lê arquivo do grafo armazenado, carrega o grafo do arquivo e printa o menu de algoritmos
+	 * @param args
+	 * @throws FileNotFoundException
+	 */
 	public static void main(String args[]) throws FileNotFoundException
 	{
 		Scanner sc = new Scanner(System.in);

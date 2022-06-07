@@ -9,6 +9,11 @@ public class BellmanFord extends Algoritmo{
     private ArrayList<Integer> pi= new ArrayList<>();
     private ArrayList<Integer> d = new ArrayList<>();
 
+    /**
+     * Início de variáveis do BellmanFord
+     * @param grafo
+     * @param origem
+     */
     public BellmanFord(Grafo grafo, Integer origem){
         super(grafo, origem);
         for(int i = 0; i < grafo.getNumVertices(); i++){
@@ -18,6 +23,10 @@ public class BellmanFord extends Algoritmo{
         d.set(origem, 0);
     }
 
+    /**
+     * Seta array pi e de distancia
+     * @param aresta
+     */
     private void relax(Aresta aresta){
         if(d.get(aresta.getDestino()) > d.get(aresta.getInicio()) + aresta.getPeso()){
             d.set(aresta.getDestino(), d.get(aresta.getInicio()) + aresta.getPeso());
@@ -25,6 +34,11 @@ public class BellmanFord extends Algoritmo{
         }
     }
 
+    /**
+     * Algoritmo Bellman Ford
+     * @param origem
+     * @return
+     */
     private Boolean bellmanFord(Integer origem){
         if(!grafo.getOrientado()){
             System.out.println("Nao foi possivel executar, o grafo deve ser orientado");
@@ -48,6 +62,10 @@ public class BellmanFord extends Algoritmo{
         return false;
     }
 
+    /**
+     * Imprime o resultado em console
+     * @param origem
+     */
     public void imprimirResultado(Integer origem){
         int j, k = 0, w;
         System.out.println("\nOrigem: " + origem);
@@ -74,6 +92,10 @@ public class BellmanFord extends Algoritmo{
         }
     }
 
+    /**
+     * Gatilho para o algoritmo de Bellman Ford
+     * @param origem
+     */
     public void run(Integer origem)
 	{
 		System.out.println("Iniciando o algoritmo de Bellman Ford");

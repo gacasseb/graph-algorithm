@@ -4,12 +4,20 @@ import Grafo.Grafo;
 
 public class Profundidade extends Algoritmo {
 	
+	// Vetor de cores
 	private String[] cor;
+	// Guarda vértice precendete
 	private Integer[] precedente;
 	private Integer time;
 	private Integer[] timestamp;
+	// Tempo de início
 	private Integer[] finishTime;
-		
+	
+	/**
+	 * Início de todas as variáveis, começa todas as cores com branco
+	 * @param grafo
+	 * @param origem
+	 */
 	public Profundidade(Grafo grafo, Integer origem)
 	{
 		super(grafo, origem);
@@ -37,7 +45,7 @@ public class Profundidade extends Algoritmo {
 	public void run()
 	{
 		System.out.println("Iniciando o algoritmo em profundidade");
-		visit(3);
+		visit(origem);
 		System.out.println("Finalizado");
 	}
 	
@@ -53,6 +61,7 @@ public class Profundidade extends Algoritmo {
 		
 		System.out.println(current);
 		
+		// Percorre todos os vértices
 		for ( int i = 0; i < this.grafo.vertices[current].size(); i++ ) {
 			int next = (int) this.grafo.vertices[current].get(i)[0];
 			if ( cor[next] == "branco" ) {
